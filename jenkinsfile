@@ -21,6 +21,18 @@ pipeline {
                    '''
             }
         }
+        stage('Test') {
+            steps {
+                echo 'Testing'
+            }
+        }
+        stage("Deploy") {
+            steps {
+                bat '''
+                   curl -d POST https://api.render.com/deploy/srv-cgb0athmbg55nqkh7vf0?key=wcwXguke5GI
+                   '''
+            }
+        }
         stage('End') {
             steps {
                 echo 'Build has run successfully'
