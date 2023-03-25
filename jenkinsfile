@@ -38,5 +38,10 @@ pipeline {
                 echo 'Build has run successfully'
             }
         }
+        stage("Slack") {
+            steps {
+                slackSend channel: "#gakii-ip1", message: "Deployed: ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}>)"
+            }
+        }
     }
 }
